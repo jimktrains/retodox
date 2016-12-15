@@ -9,18 +9,28 @@ class ToDoList extends React.Component {
 	}
 
 	componentDidMount() {
-			jQuery.getJSON(`/task.json`, res => {
-					this.setState(res);
-				});
-		}
+    this.updateList();
+  }
+
+  updateList() {
+    jQuery.getJSON(`/task.json`, res => {
+        this.setState(res);
+    });
+  }
 
   render () {
     return (
       <div>
-      {this.state.tasks.map(item => 
-					<Task id={item.id} 
-								title={item.title} 
-								completed={item.completed}/>)}
+        <ul>
+            {this.state.tasks.map(item => 
+                (<li>
+                    <Task id={item.id} 
+                          title={item.title} 
+                          complete={item.complete}/>
+                </li>)
+             )}
+         </ul>
+         <TaskForm list={this} formid="newtask"/>
       </div>
     );
   }
