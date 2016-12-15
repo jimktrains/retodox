@@ -1,4 +1,4 @@
-class TaskForm extends React.Component {
+class CategoryForm extends React.Component {
   static propTypes () {
     formid: React.PropTypes.string;
     list: React.ProtoTypes.node;
@@ -13,11 +13,9 @@ class TaskForm extends React.Component {
     let me = this;
     e.preventDefault();
     jQuery.ajax({
-        'url': '/task',
-        'data': {'task': {
+        'url': '/category',
+        'data': {'category': {
           'title': e.target.querySelector('input[name=title]').value,
-          'category_id': this.props.list.props.category_id,
-          'complete': false
         } },
         'dataType': 'json',
         'method': 'POST',
@@ -31,7 +29,7 @@ class TaskForm extends React.Component {
     let titleid = this.props.formid + "-title";
     return (
       <form ref="form" onSubmit={this.submit} id={this.props.formid}>
-        <label>ToDo: <input type="text" name="title" id={titleid}/></label>
+        <label>Categroy: <input type="text" name="title" id={titleid}/></label>
         <input type="submit"/>
       </form>
     );

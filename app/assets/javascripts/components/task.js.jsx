@@ -1,7 +1,8 @@
 var Task = React.createClass({
   propTypes: {
     title: React.PropTypes.string,
-    complete: React.PropTypes.bool
+    complete: React.PropTypes.bool,
+    category_id: React.PropTypes.int
   },
 
   getInitialState: function() {

@@ -1,6 +1,10 @@
 class TaskController < ApplicationController
   def index
-    @tasks = Task.all
+    if params[:category_id]
+      @tasks = Task.where(category_id: params[:category_id]).all
+    else
+      @tasks = Task.all
+    end
   end
 
   def update
@@ -19,6 +23,6 @@ class TaskController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:title, :complete, :id)
+      params.require(:task).permit(:title, :complete, :category_id, :id)
     end
 end
